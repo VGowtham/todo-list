@@ -4,6 +4,11 @@ import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: "login",
+    component: LoginComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
