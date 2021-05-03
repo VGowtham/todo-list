@@ -1,0 +1,34 @@
+<div class="main-sec">
+    <div class="login-page">
+      <div class="form">
+        <p class="heading"><span class="signup" (click)="isSignup = true" [ngClass]="{ 'font-bold': isSignup}">Sign Up</span> | <span class="signin" [ngClass]="{ 'font-bold': !isSignup}" (click)="isSignup = false">Sign In</span></p>
+        <form class="register-form" *ngIf="isSignup">
+            <p class="error" *ngIf="signupError">{{signupError}}</p>
+            <input type="text" autocomplete="off"  name="username" readonly onfocus="this.removeAttribute('readonly');" [(ngModel)]="signup.username" placeholder="Username"/>
+          <input type="text" autocomplete="off"  name="email" readonly onfocus="this.removeAttribute('readonly');" [(ngModel)]="signup.emailId" placeholder="Email Id"/>
+          <select name="gender" id="gender-select" [(ngModel)]="signup.gender">
+            <option value="" selected="" disabled>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Transgender">Transgender</option>
+          </select>
+          <div class="date-sec">
+            <input placeholder="Enter Date of Birth" name="dob" [(ngModel)]="signup.dob" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </div>
+          <input type="text" autocomplete="off" name="phone" readonly onfocus="this.removeAttribute('readonly');" [(ngModel)]="signup.phoneNumber" (keypress)="checkNumber($event)" placeholder="Phone Number"/>
+          <input type="text" autocomplete="off" name="address" readonly onfocus="this.removeAttribute('readonly');" [(ngModel)]="signup.address" placeholder="Address"/>
+          <input type="password" autocomplete="off" name="password" readonly onfocus="this.removeAttribute('readonly');" [(ngModel)]="signup.password" placeholder="Password"/>
+          <input type="password" autocomplete="off" name="confirmpassword" readonly onfocus="this.removeAttribute('readonly');" [(ngModel)]="signup.confirmPassword" placeholder="Confirm Password" />
+          <button type="button" class="signup-btn" (click)="signUp()">Sign Up</button>
+        </form>
+        <form class="register-form" *ngIf="!isSignup">
+            <p class="error" *ngIf="loginError">{{loginError}}</p>
+          <input type="text" autocomplete="off"  name="email" readonly onfocus="this.removeAttribute('readonly');" [(ngModel)]="login.emailId" placeholder="Email Id"/>
+          <input type="password" autocomplete="off" name="password" readonly onfocus="this.removeAttribute('readonly');" [(ngModel)]="login.password" placeholder="Password"/>
+          <button type="button" class="signup-btn" (click)="signIn()">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>

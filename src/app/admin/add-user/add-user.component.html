@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="content-sec row">
+        <p class="error" *ngIf="error">{{error}}</p>
+        <div class="col-md-12" [id]="'userId-' + i" *ngFor="let signup of users; let i = index;">
+            <p class="error" *ngIf="signup.error">{{signup.error}}</p>
+            <div class="form-group">
+                <label for="Username">Username</label>
+                <input type="text" class="form-control" [(ngModel)]="signup.username" id="Username" placeholder="Enter Username">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email Id</label>
+                <input type="text" class="form-control" (keyup)="searchByEmail($event, signup)" [(ngModel)]="signup.emailId" id="exampleInputEmail1" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="Gender">Gender</label>
+                <select name="gender" class="form-control"  id="gender-select" [(ngModel)]="signup.gender">
+                    <option value="" selected="" disabled>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Transgender">Transgender</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" id="phone" (keypress)="checkNumber($event)" [(ngModel)]="signup.phoneNumber" placeholder="Enter Phone Number">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <div class="date-sec">
+                    <input placeholder="Enter Date of Birth" name="dob" class="form-control" [(ngModel)]="signup.dob" [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Address">Address</label>
+                <input type="text" class="form-control" [(ngModel)]="signup.address" id="Address" placeholder="Enter Address">
+            </div>
+              <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" [(ngModel)]="signup.password" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <button type="button" *ngIf="i!=0" class="btn btn-primary pull-left" (click)="removeUser(i)">Remove User</button>
+              <button type="button" *ngIf="!update" class="btn btn-primary pull-right" (click)="addUser()">Add User</button>
+        </div>
+        <div class="col-md-6 action">
+            <button type="button" *ngIf="!update" class="btn btn-primary" (click)="submit()">Submit</button>    
+            <button type="button" *ngIf="update" class="btn btn-primary" (click)="updateUser()">Update</button>    
+        </div>
+    </div>
+</div>

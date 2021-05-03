@@ -1,0 +1,74 @@
+<div class="container">
+    <div class="content-sec">
+        <div class="row col-md-12">
+            <div class="card col-md-6">
+                <div class="card-body">
+                  <h2 class="card-title"><span class="glyphicon glyphicon-user"></span> Add User</h2>
+                  <p class="card-text">Click here to add users</p>
+                  <a href="javascript:void(0)" (click)="addUser()" class="btn btn-primary">Add User</a>
+                </div>
+              </div>
+              <div class="card col-md-6">
+                <div class="card-body">
+                  <h2 class="card-title"><span class="glyphicon glyphicon-ok"></span> Add Task</h2>
+                  <p class="card-text">Click here to add task to users.</p>
+                  <a href="javascript:void(0)" class="btn btn-primary">Add Task</a>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-12 row">
+            <div class="form-group col-md-12">
+                <input type="text" class="form-control" (keyup)="getUsers('init')" [(ngModel)]="filter.username" id="exampleInputEmail1" placeholder="Search Users by Name">
+            </div>
+            <div class="col-md-12 table-responsive">
+                <table class="table table-hover table-striped" mat-table [dataSource]="dataSource" matSort>
+
+                    <ng-container matColumnDef="username">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
+                        <td mat-cell *matCellDef="let element"> {{element.username}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="emailId">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Id </th>
+                        <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="gender">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+                        <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="phoneNumber">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone Number </th>
+                        <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="dob">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date of Birth </th>
+                        <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="address">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+                        <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                    </ng-container>
+    
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                        <td mat-cell *matCellDef="let element"> 
+                            <div class="action-buttons">
+                                <span class="glyphicon glyphicon-pencil btn-primary" (click)="editUser(element)"></span>
+                                <span class="glyphicon glyphicon-trash btn-primary" (click)="deleteUser(element._id)"></span>
+                            </div>
+                        </td>
+                    </ng-container>
+                
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    </table>
+                
+                    <mat-paginator [length]="count" [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+.container {
+    height: 100%;
+    .content-sec {
+        .card {
+            padding: 20px;
+            .glyphicon {
+                padding-right: 5px;
+            }
+            .card-body {
+                padding: 20px;
+                border: solid 1px #ddd;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+table {
+    td {
+        vertical-align: middle;
+    }
+    .action-buttons {
+        span {
+            padding: 10px;
+            border: solid 1px #000;
+            margin: 10px;
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{data.title}}</h1>
+<div mat-dialog-content>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>{{data.message}}</label>
+            </div>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions class="pull-right">
+    <button type="button" (click)="cancelDialog()" class="btn btn-info pull-right">Cancel</button>
+  <button type="button" (click)="acceptDialog()" class="btn btn-info pull-right">Ok</button>
+</div>
